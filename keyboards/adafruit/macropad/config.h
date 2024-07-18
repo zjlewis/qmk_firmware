@@ -51,4 +51,5 @@
 
 #define SPEAKER_SHUTDOWN GP14
 
-#define TAPPING_TERM 150
+#define TAPPING_TERM 100
+

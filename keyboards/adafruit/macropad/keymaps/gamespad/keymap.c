@@ -39,18 +39,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LEFT, KC_DOWN, KC_RGHT
   ),
   [3] = LAYOUT(
-                        TO(0),
-      CK_TOGG, AU_TOGG, _______,
-      _______, _______, _______,
-      _______, _______, _______,
-      _______, _______, _______
+                      TO(0),
+      KC_F10, KC_F11, KC_F12,
+      KC_F7,  KC_F8,  KC_F9,
+      KC_F4,  KC_F5,  KC_F6,
+      KC_F1,  KC_F2,  KC_F3
   ),
   [4] = LAYOUT(   //media control
                         TO(0),
-      XXXXXXX, XXXXXXX, XXXXXXX,
-      KC_AUDIO_MUTE,        KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP,
-      KC_MEDIA_REWIND,      KC_MEDIA_PLAY_PAUSE,  KC_MEDIA_FAST_FORWARD,
-      KC_MEDIA_PREV_TRACK,  KC_MEDIA_STOP,        KC_MEDIA_NEXT_TRACK
+      XXXXXXX, XXXXXXX, KC_AUDIO_VOL_UP,
+      XXXXXXX, XXXXXXX, KC_AUDIO_VOL_DOWN,
+      XXXXXXX, XXXXXXX, KC_AUDIO_MUTE,
+      XXXXXXX, XXXXXXX, KC_MEDIA_PLAY_PAUSE
   ),
 };
 
@@ -75,10 +75,10 @@ const ledmap PROGMEM ledmaps[] = {
     {HSV_OFF}, {HSV_OFF}, {HSV_RED}
   },
   {
-    {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE},
-    {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE},
-    {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE},
-    {HSV_RED},  {HSV_BLUE}, {HSV_GREEN}
+    {HSV_BLUE},     {HSV_BLUE}, {HSV_BLUE},
+    {HSV_BLUE},     {HSV_BLUE}, {HSV_BLUE},
+    {HSV_BLUE},     {HSV_BLUE}, {HSV_BLUE},
+    {HSV_MAGENTA},  {HSV_BLUE}, {HSV_SPRINGGREEN}
   },
   {
     {HSV_OFF},    {HSV_OFF},    {HSV_OFF},
@@ -87,16 +87,16 @@ const ledmap PROGMEM ledmaps[] = {
     {HSV_PURPLE}, {HSV_PURPLE}, {HSV_PURPLE}
   },
   {
-    {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-    {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-    {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-    {HSV_OFF}, {HSV_OFF}, {HSV_OFF}
+    {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN},
+    {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN},
+    {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN},
+    {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN}
   },
   {
-    {HSV_OFF}, {HSV_OFF}, {HSV_OFF},
-    {HSV_RED}, {HSV_BLUE}, {HSV_GREEN},
-    {HSV_YELLOW}, {HSV_SPRINGGREEN}, {HSV_YELLOW},
-    {HSV_ORANGE}, {HSV_RED}, {HSV_ORANGE}
+    {HSV_OFF}, {HSV_OFF}, {HSV_GREEN},
+    {HSV_OFF}, {HSV_OFF}, {HSV_BLUE},
+    {HSV_OFF}, {HSV_OFF}, {HSV_RED},
+    {HSV_OFF}, {HSV_OFF}, {HSV_SPRINGGREEN}
   }
 };
 
@@ -119,7 +119,7 @@ void set_layer_rgb(int layer) {
       .v = val,
     };
 
-    if ((*l)[i][2]) {
+    if (hsv.h || hsv.s) {
       RGB rgb = hsv_to_rgb(hsv);
       rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
     }
