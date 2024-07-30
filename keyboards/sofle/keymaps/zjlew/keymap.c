@@ -5,7 +5,7 @@
 enum zjl_sofle_layers {
     _ALPHA,
     _SYMB,
-    _NAV,
+    _SEL,
     _ADJ,
     _NUMPAD
 };
@@ -14,7 +14,7 @@ enum zjl_sofle_layers {
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_ALPHA]   = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),      ENCODER_CCW_CW(KC_PGDN, KC_PGUP)},
     [_SYMB]    = { ENCODER_CCW_CW(_______, _______),      ENCODER_CCW_CW(_______, _______)},
-    [_NAV]     = { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),      ENCODER_CCW_CW(RGB_SAD, RGB_SAI)},
+    [_SEL]     = { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),      ENCODER_CCW_CW(RGB_SAD, RGB_SAI)},
     [_ADJ]     = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI),      ENCODER_CCW_CW(RGB_RMOD,RGB_MOD)},
     [_NUMPAD]  = { ENCODER_CCW_CW(XXXXXXX, XXXXXXX),      ENCODER_CCW_CW(XXXXXXX, XXXXXXX)}
 };
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LT(_NUMPAD,KC_ESC),   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
               KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,
               KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,    KC_MPLY,KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-               KC_LGUI,LALT_T(KC_LEFT),LCTL_T(KC_RGHT), MO(_NAV), KC_SPC,      KC_ENT,  MO(_SYMB), RCTL_T(KC_UP), RALT_T(KC_DOWN), KC_RGUI
+               KC_LGUI,LALT_T(KC_LEFT),LCTL_T(KC_RGHT), LT(_SEL,KC_BSPC), KC_SPC,      KC_ENT,  LT(_SYMB,KC_TAB), RCTL_T(KC_UP), RALT_T(KC_DOWN), KC_RGUI
 ),
 /* SYMBOLS
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            |      | LAlt | LCTR | NAV  |/       /        \       \ | ADJ  | RCTR | RAlt |      |
  *            `-----------------------------------'           '------''---------------------------'
  */
-[_NAV] = LAYOUT(
+[_SEL] = LAYOUT(
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   _______, XXXXXXX, KC_PSCR, KC_APP,  XXXXXXX, XXXXXXX,                         KC_HOME,  KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_F12,
   _______, C(KC_A), C(KC_S), C(KC_D), C(KC_F), XXXXXXX,                         KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_DEL,  KC_BSPC,
@@ -90,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | BOOT |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |RGBTog| Hue+ | Sat+ | Val+ |      |      |                    |      | VOLDO| MUTE | VOLUP|      |      |
+ * |RGBTog| Hue+ | Sat+ | Val+ | Spd+ |      |                    |      | VOLDO| MUTE | VOLUP|      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Mode | Hue- | Sat- | Val- |      |      |-------.    ,-------|      | PREV | PLAY | NEXT |      |      |
+ * | Mode | Hue- | Sat- | Val- | Spd- |      |-------.    ,-------|      | PREV | PLAY | NEXT |      |      |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /    \       \-----------------------------------------'
@@ -102,8 +102,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_ADJ] = LAYOUT(
   QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-  RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                     XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+  RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, XXXXXXX,                     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
+  RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, XXXXXXX,                     XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                     _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______
   ),
@@ -123,10 +123,70 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_NUMPAD] = LAYOUT(
   XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______, KC_NUM, KC_PSLS, KC_PAST, KC_PMNS, XXXXXXX,
-  TO(_ALPHA), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_CIRC, KC_P7,  KC_P8,   KC_P9,   KC_PPLS, KC_BSLS,
-  XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_MINS, KC_P4,  KC_P5,   KC_P6,   KC_PEQL, KC_PIPE,
+  TO(_ALPHA), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_CIRC, KC_P7,  KC_P8,   KC_P9,   KC_PPLS, KC_BSPC,
+  XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_MINS, KC_P4,  KC_P5,   KC_P6,   KC_PEQL, KC_BSLS,
   XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,_______,   _______,KC_PLUS, KC_P1,  KC_P2,   KC_P3,   KC_PENT, KC_RSFT,
                        _______, _______, _______, _______,_______,   _______,_______, KC_P0,  KC_PDOT, _______
-),
+)
 };
 
+// some example numlock code
+
+// bool  variables
+bool bnumlock = false;
+bool numlock_changed = false;
+
+//
+bool led_update_user(led_t led_state) {
+  bnumlock = led_state.num_lock;
+  return true;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  // set numlock in numpad layer
+  if (IS_LAYER_ON_STATE(state, _NUMPAD)) {
+    if(!bnumlock) {
+      numlock_changed = true;
+      register_code(KC_NUM);
+      unregister_code(KC_NUM);
+    }
+  } else {
+    if(bnumlock && numlock_changed) {
+      numlock_changed = false;
+      register_code(KC_NUM);
+      unregister_code(KC_NUM);
+    }
+  }
+
+  // set layer specific colors, works with animations?
+  // TODO(TBD): set layer-specific per-key colors if program memory allows
+  HSV curr_hsv = rgb_matrix_get_hsv();
+  uint8_t h = curr_hsv.h;
+  uint8_t s = curr_hsv.s;
+  uint8_t v = curr_hsv.v;
+
+  switch (get_highest_layer(state)) {
+    case _ALPHA:
+      h = 170;  //blue
+      break;
+    case _SYMB:
+      h = 106;  //springgreen
+      break;
+    case _SEL:
+      h = 191;  //purple
+      break;
+    case _ADJ:
+      h = 36;   //gold
+      break;
+    case _NUMPAD:
+      h = 128;  //cyan
+      break;
+    default:
+      h = 0;    //red
+      break;
+  }
+
+  rgb_matrix_sethsv_noeeprom(h, s, v);
+
+  return state;
+}
