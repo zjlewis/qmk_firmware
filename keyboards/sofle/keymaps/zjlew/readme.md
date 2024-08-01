@@ -8,4 +8,4 @@ Features:
     - Symbol places shifted number symbols on home row, numbers above and other symbols below
     - Select has vim-like arrow and home/end/pgup/pgdn clusters on left, adds ctl modifier to several keys on right
 - Numpad layer with automatic numlock activation/deactivation
-- Per layer hue setting, works with animations just overwrites hue
+- Per layer hue/sat setting, works with animations just overwrites hue/sat
