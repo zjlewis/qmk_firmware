@@ -24,20 +24,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * ALPHA
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+ * |   =  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |   -  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|  MUTE |    | Pause |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LGUI | Left | Right| MO   | / Space /       \Enter \  | MO   | Down |  Up  | RGUI |
- *            |      | LAlt | LCTR | NAV  |/       /         \      \ | SYMB | RCTR | RAlt |      |
- *            `-----------------------------------'           '------''---------------------------'
+ * `-----------------------------------------/       /    \       \-----------------------------------------'
+ *            | LGUI | Left | Right| MO   | / Space /      \ Enter \  | MO   | Down |  Up  | RGUI |
+ *            |      | LAlt | LCTR | NAV  |/       /        \       \ | SYMB | RCTR | RAlt |      |
+ *            `-----------------------------------'          '-------''---------------------------'
  */
 [_ALPHA] = LAYOUT(
-              KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_GRV,
+              KC_EQL,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
               KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
    LT(_NUMPAD,KC_ESC),  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,
               KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,    KC_MPLY,KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
@@ -45,15 +45,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* SYMBOLS
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  `   |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
+ * |   =  |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   |  |
  * |------+------+------+------+------+------|  MUTE |    | Pause |------+------+------+------+------+------|
- * | Shift|   =  |   -  |   +  |   {  |   }  |-------|    |-------|   [  |   ]  |   <  |   >  |   \  | Shift|
+ * | Shift|   `  |   -  |   =  |   {  |   }  |-------|    |-------|   [  |   ]  |   <  |   >  |   \  | Shift|
  * `-----------------------------------------/       /    \       \-----------------------------------------'
- *            | LGUI | LAlt | LCTR | MO   | / UndScr/      \ Enter \  | MO   | RCTR | RAlt | RGUI |
+ *            | LGUI | LAlt | LCTR | MO   | / Space /      \ Enter \  | MO   | RCTR | RAlt | RGUI |
  *            |      |      |      | ADJ  |/       /        \       \ | SYMB |      |      |      |
  *            `-----------------------------------'           '-----------------------------------'
  */
@@ -61,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-  _______, KC_EQL,  KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, _______,     _______, KC_LBRC, KC_RBRC, KC_LABK, KC_RABK, KC_BSLS, _______,
-                    _______, _______, _______, MO(_ADJ),KC_UNDS,     _______, _______, _______, _______, _______
+  _______, KC_GRV,  KC_MINS, KC_EQL,  KC_LCBR, KC_RCBR, _______,     _______, KC_LBRC, KC_RBRC, KC_LABK, KC_RABK, KC_BSLS, _______,
+                    _______, _______, _______, MO(_ADJ),_______,     _______, _______, _______, _______, _______
 ),
  /* NAV
  * ,----------------------------------------.                     ,-----------------------------------------.
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | BOOT |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |RGBTog|      | Mode+| Val+ | Spd+ |      |                    |      | VOLDO| MUTE | VOLUP|      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `-----------------------------------'           '------''---------------------------'
  */
   [_ADJ] = LAYOUT(
-  QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   RGB_TOG, XXXXXXX, RGB_MOD, RGB_VAI, RGB_SPI, XXXXXXX,                     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, RGB_RMOD,RGB_VAD, RGB_SPD, XXXXXXX,                     XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -131,25 +131,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // some example numlock code
 
-// bool  variables
+// track numlock state and if numpad layer changes it
 bool bnumlock = false;
 bool numlock_changed = false;
 
-//
 bool led_update_user(led_t led_state) {
   bnumlock = led_state.num_lock;
   return true;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  // set numlock in numpad layer
+  // set numlock if activating numpad layer
   if (IS_LAYER_ON_STATE(state, _NUMPAD)) {
     if(!bnumlock) {
       numlock_changed = true;
       register_code(KC_NUM);
       unregister_code(KC_NUM);
     }
-  } else {
+  }
+  // else return numlock to previous state
+  else {
     if(bnumlock && numlock_changed) {
       numlock_changed = false;
       register_code(KC_NUM);
@@ -157,7 +158,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
   }
 
-  // set layer specific colors, works with animations?
+  // set layer specific colors, works with animations
   // TODO(TBD): set layer-specific per-key colors if program memory allows
   HSV curr_hsv = rgb_matrix_get_hsv();
   uint8_t h = curr_hsv.h;
@@ -188,4 +189,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   rgb_matrix_sethsv_noeeprom(h, s, v);
 
   return state;
+}
+
+void keyboard_post_init_user(void) {
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_RIVERFLOW);
+    rgb_matrix_sethsv_noeeprom(RGB_MATRIX_DEFAULT_HUE, 255, RGB_MATRIX_MAXIMUM_BRIGHTNESS);
 }
